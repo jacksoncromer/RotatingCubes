@@ -1,0 +1,83 @@
+Jackson Cromer
+<!DOCTYPE html>
+<html>
+<style type="text/css">
+    canvas { background: rgb(3, 250, 176); }
+</style>
+
+<div style="font-family:verdana";>
+
+
+</br>
+<table style "width:50%">
+
+ <tr>
+    <td>Reset:</td>
+ <td><button id = "Reset">Reset center</button></td>
+ 
+ 
+ </tr>
+ <tr>
+    <td>Scale: 10%</td>
+    <td><input type="range" min="1" max="100" value="20" class="slider" id="myRange"></td>
+    <td>100%</td>
+ </tr>
+ <tr>
+    <td>Speed: 0</td>
+    <td><input type="range" min="0" max="100" value="20" class="slider" id="myRange2"></td>
+    <td>2</td>
+ </tr>
+  
+ </table>
+ 
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute  vec4 vPosition;
+attribute  vec4 vColor;
+varying vec4 fColor;
+
+
+uniform mat4 modelView;
+
+void main() 
+{
+   
+
+    gl_PointSize = 10.0;
+    
+	gl_Position = modelView*vPosition;
+    fColor = vColor;
+} 
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="pickAcube.js"></script>
+<script type="text/javascript" src="CreateCube.js"></script>
+
+
+
+<body>
+
+<canvas id="gl-canvas" width="300" height="300" style="border:2px solid #000000;">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+   
+
+</body>
+</html>
